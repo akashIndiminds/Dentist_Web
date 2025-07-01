@@ -94,7 +94,7 @@ export const Hero = () => {
                     <Image
                       src="/dental.png" // Path relative to the public folder
                       alt="Professional dental care"
-                      width={300} // Adjust width to fit the container
+                      width={400} // Adjust width to fit the container
                       height={375} // Adjust height to maintain 4/5 aspect ratio (300 * 5/4 = 375)
                       className="rounded-2xl mx-auto mb-6 shadow-xl object-cover"
                     />

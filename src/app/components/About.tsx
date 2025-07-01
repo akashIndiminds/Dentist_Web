@@ -1,14 +1,15 @@
+// src/app/components/About.tsx
 'use client'
 
-import { Award, Users, Clock, Heart, CheckCircle, Sparkles } from 'lucide-react'
+import { Users, CheckCircle, Sparkles } from 'lucide-react'
 
 export default function About() {
-//   const stats = [
-//     { number: '15+', label: 'Years Experience', icon: Clock },
-//     { number: '1000+', label: 'Happy Patients', icon: Users },
-//     { number: '50+', label: 'Awards Won', icon: Award },
-//     { number: '99%', label: 'Success Rate', icon: Heart },
-//   ]
+  const stats = [
+    { number: '15+', label: 'Years Experience', icon: Users },
+    { number: '1000+', label: 'Happy Patients', icon: Users },
+    { number: '50+', label: 'Awards Won', icon: Users },
+    { number: '99%', label: 'Success Rate', icon: Users },
+  ]
 
   const highlights = [
     'Advanced digital dentistry technology',
@@ -52,7 +53,7 @@ export default function About() {
                 We specialize in both general dentistry and oral surgery, offering everything 
                 from routine cleanings and cosmetic procedures to complex surgical interventions. 
                 Our goal is to help you achieve and maintain optimal oral health while creating 
-                the beautiful smile you've always wanted.
+                the beautiful smile you&apos;ve always wanted.
               </p>
             </div>
 
@@ -110,7 +111,7 @@ export default function About() {
 
             {/* Enhanced Stats Cards */}
             <div className="grid grid-cols-2 gap-4 mt-8">
-              {/* {stats.map((stat, index) => {
+              {stats.map((stat, index) => {
                 const IconComponent = stat.icon
                 return (
                   <div key={index} className="group bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl text-center transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
@@ -121,7 +122,7 @@ export default function About() {
                     <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
                   </div>
                 )
-              })} */}
+              })}
             </div>
 
             {/* Floating blue elements */}
