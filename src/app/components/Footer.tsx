@@ -50,7 +50,7 @@ export const Footer = () => {
                 <span className="text-white font-bold text-xl">D</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Dr. Smith</h3>
+                <h3 className="text-xl font-bold">Dr. Rajat Majumdar</h3>
                 <p className="text-blue-300 text-sm">Dental Care & Oral Surgery</p>
               </div>
             </div>
@@ -158,7 +158,7 @@ export const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-1 text-gray-400 text-sm">
-              <span>© 2025 Dr. Smith. Made with</span>
+              <span>© 2025 Dr. Rajat Majumdar. Made with</span>
               <Heart className="h-4 w-4 text-red-500 fill-current animate-pulse" />
               <span>for healthy smiles.</span>
             </div>

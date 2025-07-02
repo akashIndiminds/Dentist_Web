@@ -11,7 +11,7 @@ export default function Loading() {
             <span className="text-white font-bold text-2xl">D</span>
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">Dr. Smith</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Dr. Rajat Majumdar</h1>
             <p className="text-gray-600">Dental Care & Oral Surgery</p>
           </div>
         </div>

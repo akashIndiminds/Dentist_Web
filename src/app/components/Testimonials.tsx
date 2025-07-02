@@ -13,7 +13,7 @@ export const Testimonials = () => {
       name: 'Jennifer Wilson',
       treatment: 'Dental Implants',
       rating: 5,
-      text: 'Dr. Smith and his team transformed my smile completely. The dental implant procedure was much more comfortable than I expected, and the results exceeded my expectations. I can finally smile with confidence again!'
+      text: 'Dr. Rajat Majumdar and his team transformed my smile completely. The dental implant procedure was much more comfortable than I expected, and the results exceeded my expectations. I can finally smile with confidence again!'
     },
     {
       id: '2',
@@ -27,7 +27,7 @@ export const Testimonials = () => {
       name: 'Sarah Davis',
       treatment: 'Oral Surgery',
       rating: 5,
-      text: 'I was nervous about my wisdom tooth extraction, but Dr. Smith made the entire experience stress-free. The pain management was excellent, and recovery was much faster than anticipated.'
+      text: 'I was nervous about my wisdom tooth extraction, but Dr. Rajat Majumdar made the entire experience stress-free. The pain management was excellent, and recovery was much faster than anticipated.'
     },
     {
       id: '4',
@@ -41,7 +41,7 @@ export const Testimonials = () => {
       name: 'Lisa Martinez',
       treatment: 'Emergency Care',
       rating: 5,
-      text: 'When I had a dental emergency on a weekend, Dr. Smith was available immediately. The quick response and expert care saved my tooth. Truly grateful for the exceptional service.'
+      text: 'When I had a dental emergency on a weekend, Dr. Rajat Majumdar was available immediately. The quick response and expert care saved my tooth. Truly grateful for the exceptional service.'
     }
   ]
 

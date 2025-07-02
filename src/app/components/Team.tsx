@@ -21,7 +21,7 @@ export const Team = () => {
   const teamMembers = [
     {
       id: '1',
-      name: 'Dr. Smith',
+      name: 'Dr. Rajat Majumdar',
       role: 'Lead Dentist & Oral Surgeon',
       bio: 'Specialized in comprehensive dental care with advanced training in oral surgery and cosmetic dentistry.',
       specialties: ['General Dentistry', 'Oral Surgery', 'Cosmetic Dentistry', 'Dental Implants'],

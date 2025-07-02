@@ -83,7 +83,7 @@ export const Header = () => {
                 <span className="text-white font-bold text-xl">D</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Dr. Smith</h1>
+                <h1 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Dr. Rajat Majumdar</h1>
                 <p className="text-sm text-gray-600">Dental Care & Oral Surgery</p>
               </div>
             </div>

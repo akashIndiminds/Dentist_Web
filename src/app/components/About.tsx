@@ -44,7 +44,7 @@ export default function About() {
               </h2>
               
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                With over <span className="font-semibold text-blue-600">15 years of experience</span> in comprehensive dental care, Dr. Smith 
+                With over <span className="font-semibold text-blue-600">15 years of experience</span> in comprehensive dental care, Dr. Rajat Majumdar 
                 is committed to providing the highest quality dental services in a comfortable, 
                 modern environment. Our practice combines <span className="font-semibold text-blue-700">advanced technology</span> with a gentle, 
                 personalized approach to ensure every patient receives exceptional care.
@@ -99,7 +99,7 @@ export default function About() {
                     <span className="text-white text-5xl font-bold">Dr</span>
                   </div>
                   <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md">
-                    <p className="text-gray-600 font-medium">Dr. Smith professional photo</p>
+                    <p className="text-gray-600 font-medium">Dr. Rajat Majumdar professional photo</p>
                   </div>
                 </div>
               </div>
