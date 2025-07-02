@@ -1,6 +1,7 @@
+// src/components/Contact.tsx
 "use client";
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { 
   MapPin, 
   Phone, 
@@ -11,9 +12,7 @@ import {
   Send, 
   CheckCircle,
   Sparkles,
-  Star,
   Shield,
-  Heart,
   Navigation,
   Route
 } from 'lucide-react'
@@ -49,7 +48,7 @@ function GoogleMapComponent() {
         })
         setIsLoading(false)
       },
-      (error) => {
+      () => {
         setError("Unable to retrieve your location.")
         setIsLoading(false)
       },
@@ -211,7 +210,7 @@ export default function ContactPage() {
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent<HTMLDivElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log('Form submitted:', formData)
     setIsSubmitted(true)
@@ -295,7 +294,7 @@ export default function ContactPage() {
             </h1>
             
             <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              We're here to help with all your dental needs. Contact us today to schedule your appointment.
+              We&apos;re here to help with all your dental needs. Contact us today to schedule your appointment.
             </p>
           </div>
         </div>
@@ -353,11 +352,11 @@ export default function ContactPage() {
                     Schedule Your Visit
                   </h2>
                   <p className="text-gray-600 text-sm md:text-base">
-                    Fill out the details below and we'll contact you to schedule your visit.
+                    Fill out the details below and we&apos;ll contact you to schedule your visit.
                   </p>
                 </div>
 
-                <div className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Personal Information */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
@@ -473,7 +472,7 @@ export default function ContactPage() {
                     {isSubmitted ? (
                       <div className="flex items-center justify-center space-x-3 text-green-600 bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
                         <CheckCircle className="h-5 w-5" />
-                        <span className="font-semibold">Thank you! We'll contact you soon.</span>
+                        <span className="font-semibold">Thank you! We&apos;ll contact you soon.</span>
                       </div>
                     ) : (
                       <button 
@@ -485,7 +484,7 @@ export default function ContactPage() {
                       </button>
                     )}
                   </div>
-                </div>
+                </form>
               </div>
             </div>
 
@@ -530,7 +529,7 @@ export default function ContactPage() {
                 <div className="space-y-3">
                   <div className="bg-blue-50 p-3 rounded-lg">
                     <h4 className="font-bold text-gray-900 text-sm mb-1 flex items-center">
-                      <Star className="h-3 w-3 text-blue-600 mr-2" />
+                      <CheckCircle className="h-3 w-3 text-blue-600 mr-2" />
                       Address
                     </h4>
                     <p className="text-gray-700 text-sm">123 Dental Street<br />City, State 12345</p>
@@ -588,7 +587,7 @@ export default function ContactPage() {
               <span className="text-blue-600">Locate</span>
             </h2>
             <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-              We're conveniently located with easy access and free parking.
+              We&apos;re conveniently located with easy access and free parking.
             </p>
           </div>
           

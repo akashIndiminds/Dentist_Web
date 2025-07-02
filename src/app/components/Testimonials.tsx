@@ -113,7 +113,7 @@ export const Testimonials = () => {
 
               {/* Enhanced Testimonial Text */}
               <blockquote className="text-xl md:text-2xl text-gray-700 text-center leading-relaxed mb-8 font-light">
-                "{testimonials[currentTestimonial].text}"
+                &ldquo;{testimonials[currentTestimonial].text}&rdquo;
               </blockquote>
 
               {/* Enhanced Patient Info */}

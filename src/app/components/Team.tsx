@@ -1,19 +1,12 @@
 // src/components/Team.tsx
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { 
   GraduationCap, 
   Award, 
   Heart, 
-  Star, 
-  Quote, 
-  ChevronLeft, 
-  ChevronRight,
-  Sparkles,
-  Users,
-  Shield,
-  CheckCircle
+  Users
 } from 'lucide-react'
 
 // Team Component

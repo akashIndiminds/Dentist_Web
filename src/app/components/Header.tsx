@@ -7,20 +7,7 @@ import {
   X, 
   Phone, 
   Calendar, 
-  MapPin,
-  Star, 
-  Shield, 
-  Clock, 
-  Award,
-  Mail,
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
-  Heart,
-  ArrowUp,
-  Sparkles,
-  CheckCircle
+  MapPin
 } from 'lucide-react'
 
 // Header Component

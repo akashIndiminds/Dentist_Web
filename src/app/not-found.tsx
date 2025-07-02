@@ -1,7 +1,6 @@
 // src/app/not-found.tsx
 import React from 'react';
 import Link from 'next/link';
-import { Home, ArrowLeft, Phone, Calendar } from 'lucide-react';
 
 export default function NotFound() {
   return (
@@ -12,12 +11,12 @@ export default function NotFound() {
         <p className="text-gray-600 mb-8">
           Sorry, we couldn&apos;t find the page you&apos;re looking for.
         </p>
-        <a
+        <Link
           href="/"
           className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
         >
           Go Home
-        </a>
+        </Link>
       </div>
     </div>
   )
