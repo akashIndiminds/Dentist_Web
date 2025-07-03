@@ -1,47 +1,43 @@
 // src/app/components/Header.tsx
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react'
-import { 
-  Menu, 
-  X, 
-  Phone, 
-  MapPin,
-  MessageCircle
-} from 'lucide-react'
+import React, { useState, useEffect } from "react";
+import { Menu, X, Phone, MapPin, MessageCircle } from "lucide-react";
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigation = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Team', href: '#team' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
-  ]
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Team", href: "#team" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   const scrollToSection = (href: string) => {
-    setIsMenuOpen(false)
-    const element = document.querySelector(href)
+    setIsMenuOpen(false);
+    const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
-  const whatsappNumber = "919876543210" // Replace with actual number
-  const whatsappMessage = "Hi Doctor, I want to book an appointment."
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+  const whatsappNumber = "916290939189"; // Replace with actual number
+  const whatsappMessage = "Hi Doctor, I want to book an appointment.";
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
 
   return (
     <>
@@ -68,21 +64,32 @@ export const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className={`sticky top-0 z-40 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-xl border-b border-blue-100' 
-          : 'bg-white shadow-lg'
-      }`}>
+      <header
+        className={`sticky top-0 z-40 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-xl border-b border-blue-100"
+            : "bg-white shadow-lg"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3 md:py-4">
             {/* Logo */}
-            <div className="flex items-center space-x-2 md:space-x-3 group cursor-pointer" onClick={() => scrollToSection('#home')}>
+            <div
+              className="flex items-center space-x-2 md:space-x-3 group cursor-pointer"
+              onClick={() => scrollToSection("#home")}
+            >
               <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                <span className="text-white font-bold text-lg md:text-xl">D</span>
+                <span className="text-white font-bold text-lg md:text-xl">
+                  D
+                </span>
               </div>
               <div>
-                <h1 className="text-lg md:text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Dr. Rajat Majumdar</h1>
-                <p className="text-xs md:text-sm text-gray-600 hidden sm:block">Dental Care & Oral Surgery</p>
+                <h1 className="text-lg md:text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+                  Dr. Rajat Majumdar
+                </h1>
+                <p className="text-xs md:text-sm text-gray-600 hidden sm:block">
+                  Dental Care & Oral Surgery
+                </p>
               </div>
             </div>
 
@@ -102,8 +109,8 @@ export const Header = () => {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
-              <a 
-                href="tel:5551234567" 
+              <a
+                href="tel:5551234567"
                 className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors text-sm lg:text-base"
               >
                 <Phone className="h-4 w-4" />
@@ -128,7 +135,11 @@ export const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="h-6 w-6 text-gray-700" /> : <Menu className="h-6 w-6 text-gray-700" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6 text-gray-700" />
+              ) : (
+                <Menu className="h-6 w-6 text-gray-700" />
+              )}
             </button>
           </div>
         </div>
@@ -148,8 +159,8 @@ export const Header = () => {
                   </button>
                 ))}
                 <div className="pt-4 border-t border-blue-100 space-y-3">
-                  <a 
-                    href="tel:5551234567" 
+                  <a
+                    href="tel:5551234567"
                     className="flex items-center space-x-2 text-blue-600 font-semibold px-4 py-3 hover:bg-blue-50 rounded-lg transition-all"
                   >
                     <Phone className="h-4 w-4" />
@@ -171,5 +182,5 @@ export const Header = () => {
         )}
       </header>
     </>
-  )
-}
+  );
+};

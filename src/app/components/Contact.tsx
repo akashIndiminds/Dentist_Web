@@ -9,11 +9,9 @@ import {
   Clock, 
   MessageSquare, 
   CheckCircle,
-  Sparkles,
   Shield,
   Navigation,
-  Route,
-  MessageCircle
+  Route
 } from 'lucide-react'
 
 // Google Map Component
@@ -62,7 +60,7 @@ function GoogleMapComponent() {
 
   const openInGoogleMaps = () => {
     // Direct link to the clinic
-    const clinicURL = "https://www.google.com/maps/place/RG's+Smile+Zone+%26+Implant+%7C+Best+dentist+In+New+Alipore/@22.5065491,88.3280828,17z/data=!3m1!4b1!4m6!3m5!1s0x3a0270af1b69ad61:0xa53b6ea5ba440a61!8m2!3d22.5065442!4d88.3306577!16s%2Fg%2F1v8g9fgq?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
+    const clinicURL = "https://www.google.com/maps/place/RG%27s+Smile+Zone+%26+Implant+%7C+Best+dentist+In+New+Alipore/@22.5065491,88.3280828,17z/data=!3m1!4b1!4m6!3m5!1s0x3a0270af1b69ad61:0xa53b6ea5ba440a61!8m2!3d22.5065442!4d88.3306577!16s%2Fg%2F1v8g9fgq?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
     
     // If user location is available, open directions
     if (userLocation) {
@@ -94,7 +92,7 @@ function GoogleMapComponent() {
       <div className="h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] bg-gradient-to-br from-blue-100 to-blue-50 relative overflow-hidden rounded-lg md:rounded-xl lg:rounded-2xl">
         {/* Google Maps Embed for RG's Smile Zone */}
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.654567!2d88.3280828!3d22.5065491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270af1b69ad61%3A0xa53b6ea5ba440a61!2sRG's%20Smile%20Zone%20%26%20Implant%20%7C%20Best%20dentist%20In%20New%20Alipore!5e0!3m2!1sen!2sin!4v1704067200000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.654567!2d88.3280828!3d22.5065491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270af1b69ad61%3A0xa53b6ea5ba440a61!2sRG%27s%20Smile%20Zone%20%26%20Implant%20%7C%20Best%20dentist%20In%20New%20Alipore!5e0!3m2!1sen!2sin!4v1704067200000!5m2!1sen!2sin"
           className="absolute inset-0 w-full h-full border-0"
           allowFullScreen={true}
           loading="lazy"
@@ -111,7 +109,7 @@ function GoogleMapComponent() {
                   <MapPin className="h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-gray-900 text-sm md:text-base lg:text-lg leading-tight">RG's Smile Zone</h3>
+                  <h3 className="font-bold text-gray-900 text-sm md:text-base lg:text-lg leading-tight">RG&apos;s Smile Zone</h3>
                   <p className="text-gray-600 text-xs md:text-sm leading-tight">New Alipore, Kolkata</p>
                   {userLocation && (
                     <p className="text-blue-600 text-xs md:text-sm font-medium mt-1">
@@ -164,10 +162,6 @@ function GoogleMapComponent() {
 }
 
 export default function ContactPage() {
-  const whatsappNumber = "919876543210" // Replace with actual number
-  const whatsappMessage = "Hi Doctor, I want to book an appointment at RG's Smile Zone & Implant."
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
-
   const contactInfo = [
     {
       icon: Phone,
@@ -190,7 +184,7 @@ export default function ContactPage() {
       title: 'Visit Us',
       details: 'New Alipore, Kolkata',
       subtext: 'Easy parking available',
-      action: 'https://www.google.com/maps/place/RG\'s+Smile+Zone+%26+Implant+%7C+Best+dentist+In+New+Alipore/@22.5065491,88.3280828,17z',
+      action: 'https://www.google.com/maps/place/RG%27s+Smile+Zone+%26+Implant+%7C+Best+dentist+In+New+Alipore/@22.5065491,88.3280828,17z',
       gradient: 'from-blue-700 to-blue-800'
     }
   ]
@@ -320,36 +314,6 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-
-            {/* Quick Actions */}
-            {/* <div className="bg-white/90 backdrop-blur-sm p-4 md:p-6 lg:p-8 rounded-2xl shadow-xl border border-white/20">
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center">
-                <Sparkles className="h-5 w-5 md:h-6 md:w-6 mr-3 text-blue-600" />
-                Quick Actions
-              </h3>
-              <div className="space-y-3 md:space-y-4">
-                <a
-                  href={whatsappURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-full px-4 py-3 md:py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-sm md:text-base"
-                >
-                  <MessageCircle className="h-4 w-4 md:h-5 md:w-5 mr-2 group-hover:rotate-12 transition-transform" />
-                  WhatsApp Booking
-                </a>
-                <button className="group w-full px-4 py-3 md:py-4 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-sm md:text-base">
-                  <MessageSquare className="h-4 w-4 md:h-5 md:w-5 mr-2 group-hover:scale-110 transition-transform" />
-                  Live Chat
-                </button>
-                <a 
-                  href="tel:5551234567"
-                  className="group w-full px-4 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-sm md:text-base"
-                >
-                  <Phone className="h-4 w-4 md:h-5 md:w-5 mr-2 group-hover:rotate-12 transition-transform" />
-                  Emergency Call
-                </a>
-              </div>
-            </div> */}
             
           </div>
         </div>

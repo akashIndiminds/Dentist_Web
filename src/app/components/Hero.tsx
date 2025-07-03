@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Award, Calendar, CheckCircle, Clock, MessageCircle, Phone, Shield, Sparkles, Star, Loader2 } from 'lucide-react';
+import { MessageCircle, Phone, Sparkles, Loader2 } from 'lucide-react';
 
 // src/components/Hero.tsx
 export const Hero = () => {

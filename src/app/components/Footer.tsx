@@ -1,13 +1,9 @@
 // src/app/components/Footer.tsx
 "use client";
-import { ArrowUp, ChevronRight, Clock, Facebook, Heart, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, MessageCircle } from "lucide-react"
+import { ChevronRight, Clock, Facebook, Heart, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, MessageCircle } from "lucide-react"
 
 export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const whatsappNumber = "919876543210" // Replace with actual number
+  const whatsappNumber = "916290939189" // Replace with actual number
   const whatsappMessage = "Hi Doctor, I want to book an appointment."
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
 
@@ -191,15 +187,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Scroll to Top Button */}
-      {/* <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-6 w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center z-40 transform hover:scale-110 no-print"
-        aria-label="Scroll to top"
-      >
-        <ArrowUp className="h-4 w-4" />
-      </button> */}
     </footer>
   )
 }

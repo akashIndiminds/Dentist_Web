@@ -1,61 +1,91 @@
 // src/app/components/Team.tsx
-'use client'
+"use client";
 
-import React from 'react'
-import { 
-  GraduationCap, 
-  Award, 
-  Heart, 
+import React from "react";
+import {
+  GraduationCap,
+  Award,
+  Heart,
   Users,
-  MessageCircle
-} from 'lucide-react'
+  MessageCircle,
+} from "lucide-react";
 
 export const Team = () => {
-  const whatsappNumber = "919876543210" // Replace with actual number
-  const whatsappMessage = "Hi Doctor, I want to book an appointment with your team."
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+  const whatsappNumber = "916290939189"; // Replace with actual number
+  const whatsappMessage =
+    "Hi Doctor, I want to book an appointment with your team.";
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
 
   const teamMembers = [
     {
-      id: '1',
-      name: 'Dr. Rajat Majumdar',
-      role: 'Lead Dentist & Oral Surgeon',
-      bio: 'Specialized in comprehensive dental care with advanced training in oral surgery.',
-      specialties: ['General Dentistry', 'Oral Surgery', 'Cosmetic Dentistry', 'Implants'],
-      education: ['DDS - Dental Medicine', 'Oral Surgery Residency', 'Implantology Certificate'],
-      experience: '15+ Years'
+      id: "1",
+      name: "Dr. Rajat Majumdar",
+      role: "Lead Dentist & Oral Surgeon",
+      bio: "Specialized in comprehensive dental care with advanced training in oral surgery.",
+      specialties: [
+        "General Dentistry",
+        "Oral Surgery",
+        "Cosmetic Dentistry",
+        "Implants",
+      ],
+      education: [
+        "DDS - Dental Medicine",
+        "Oral Surgery Residency",
+        "Implantology Certificate",
+      ],
+      experience: "15+ Years",
     },
     {
-      id: '2',
-      name: 'Sarah Johnson',
-      role: 'Dental Hygienist',
-      bio: 'Passionate about preventive care and patient education.',
-      specialties: ['Preventive Care', 'Teeth Cleaning', 'Patient Education', 'Oral Health'],
-      education: ['Associate in Dental Hygiene', 'Continuing Education'],
-      experience: '8 Years'
+      id: "2",
+      name: "Sarah Johnson",
+      role: "Dental Hygienist",
+      bio: "Passionate about preventive care and patient education.",
+      specialties: [
+        "Preventive Care",
+        "Teeth Cleaning",
+        "Patient Education",
+        "Oral Health",
+      ],
+      education: ["Associate in Dental Hygiene", "Continuing Education"],
+      experience: "8 Years",
     },
     {
-      id: '3',
-      name: 'Maria Rodriguez',
-      role: 'Dental Assistant',
-      bio: 'Dedicated to ensuring patient comfort and supporting procedures.',
-      specialties: ['Patient Care', 'Surgical Assistance', 'Digital Imaging', 'Sterilization'],
-      education: ['Certified Dental Assistant', 'Radiology Certification'],
-      experience: '6 Years'
+      id: "3",
+      name: "Maria Rodriguez",
+      role: "Dental Assistant",
+      bio: "Dedicated to ensuring patient comfort and supporting procedures.",
+      specialties: [
+        "Patient Care",
+        "Surgical Assistance",
+        "Digital Imaging",
+        "Sterilization",
+      ],
+      education: ["Certified Dental Assistant", "Radiology Certification"],
+      experience: "6 Years",
     },
     {
-      id: '4',
-      name: 'Jennifer Smith',
-      role: 'Office Manager',
-      bio: 'Manages appointments, insurance, and ensures smooth operations.',
-      specialties: ['Office Management', 'Insurance Coordination', 'Patient Relations', 'Scheduling'],
-      education: ['Business Administration', 'Healthcare Management'],
-      experience: '10 Years'
-    }
-  ]
+      id: "4",
+      name: "Jennifer Smith",
+      role: "Office Manager",
+      bio: "Manages appointments, insurance, and ensures smooth operations.",
+      specialties: [
+        "Office Management",
+        "Insurance Coordination",
+        "Patient Relations",
+        "Scheduling",
+      ],
+      education: ["Business Administration", "Healthcare Management"],
+      experience: "10 Years",
+    },
+  ];
 
   return (
-    <section id="team" className="py-8 md:py-12 lg:py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+    <section
+      id="team"
+      className="py-8 md:py-12 lg:py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden"
+    >
       {/* Background Decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-32 md:w-64 h-32 md:h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
@@ -67,16 +97,22 @@ export const Team = () => {
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
           <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 rounded-full mb-3 md:mb-6">
             <Users className="h-3 w-3 md:h-4 md:w-4 text-blue-600 mr-2" />
-            <span className="text-xs md:text-sm font-medium text-blue-700">Our Team</span>
+            <span className="text-xs md:text-sm font-medium text-blue-700">
+              Our Team
+            </span>
           </div>
-          
+
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 md:mb-6 leading-tight">
             Meet Our Expert
             <span className="text-blue-600 block">Team</span>
           </h2>
-          
+
           <p className="text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-2">
-            Experienced professionals dedicated to providing <span className="font-semibold text-blue-600">exceptional care</span> in a welcoming environment.
+            Experienced professionals dedicated to providing{" "}
+            <span className="font-semibold text-blue-600">
+              exceptional care
+            </span>{" "}
+            in a welcoming environment.
           </p>
         </div>
 
@@ -86,21 +122,24 @@ export const Team = () => {
             <div
               key={member.id}
               className="group bg-white rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] md:hover:scale-105 border border-gray-100 text-center relative overflow-hidden"
-              style={{ 
+              style={{
                 animationDelay: `${index * 100}ms`,
               }}
             >
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full opacity-30 transform translate-x-4 sm:translate-x-6 -translate-y-4 sm:-translate-y-6"></div>
-              
+
               {/* Compact Photo */}
               <div className="relative mb-3 md:mb-4 lg:mb-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full mx-auto flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md border-2 md:border-4 border-white">
                   <span className="text-blue-600 text-sm sm:text-base md:text-xl lg:text-2xl xl:text-4xl font-bold">
-                    {member.name.split(' ').map(n => n[0]).join('')}
+                    {member.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
                   </span>
                 </div>
-                
+
                 {/* Experience Badge */}
                 <div className="absolute -bottom-1 md:-bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-2 md:px-3 py-0.5 md:py-1 rounded-full text-xs font-semibold">
                   {member.experience}
@@ -166,33 +205,54 @@ export const Team = () => {
           <div className="text-center mb-6 md:mb-8 lg:mb-10">
             <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 rounded-full mb-3 md:mb-4">
               <Heart className="h-3 w-3 md:h-4 md:w-4 text-blue-600 mr-2" />
-              <span className="text-xs md:text-sm font-medium text-blue-700">Our Values</span>
+              <span className="text-xs md:text-sm font-medium text-blue-700">
+                Our Values
+              </span>
             </div>
-            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 md:mb-4">What Drives Us Every Day</h3>
-            <p className="text-gray-600 text-sm md:text-base lg:text-lg">Principles that guide our exceptional care</p>
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 md:mb-4">
+              What Drives Us Every Day
+            </h3>
+            <p className="text-gray-600 text-sm md:text-base lg:text-lg">
+              Principles that guide our exceptional care
+            </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             <div className="text-center group">
               <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl md:rounded-2xl mx-auto mb-3 md:mb-4 lg:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <Heart className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h4 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-3">Compassionate Care</h4>
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base">We treat every patient with kindness and respect for their individual needs.</p>
+              <h4 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-3">
+                Compassionate Care
+              </h4>
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                We treat every patient with kindness and respect for their
+                individual needs.
+              </p>
             </div>
             <div className="text-center group">
               <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl md:rounded-2xl mx-auto mb-3 md:mb-4 lg:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h4 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-3">Excellence</h4>
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base">We strive for the highest standards in everything we do, ensuring exceptional results.</p>
+              <h4 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-3">
+                Excellence
+              </h4>
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                We strive for the highest standards in everything we do,
+                ensuring exceptional results.
+              </p>
             </div>
             <div className="text-center group">
               <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-700 to-blue-800 rounded-xl md:rounded-2xl mx-auto mb-3 md:mb-4 lg:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <GraduationCap className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h4 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-3">Continuous Learning</h4>
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base">We stay current with the latest dental techniques and cutting-edge technology.</p>
+              <h4 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-3">
+                Continuous Learning
+              </h4>
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                We stay current with the latest dental techniques and
+                cutting-edge technology.
+              </p>
             </div>
           </div>
 
@@ -228,5 +288,5 @@ export const Team = () => {
         }
       `}</style>
     </section>
-  )
-}
+  );
+};
