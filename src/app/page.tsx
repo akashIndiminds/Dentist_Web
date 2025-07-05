@@ -1,6 +1,5 @@
 // src/app/page.tsx
 import React from 'react';
-import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -9,6 +8,8 @@ import { Team } from './components/Team';
 import { Testimonials } from './components/Testimonials';
 import { Header } from './components/Header';
 import { WhatsAppFloat } from './components/WhatsAppFloat';
+import { Hero } from './components/Hero';
+
 
 
 export default function HomePage() {

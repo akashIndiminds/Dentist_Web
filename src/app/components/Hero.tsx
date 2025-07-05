@@ -56,13 +56,13 @@ export const Hero = () => {
       };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[fit-content] flex items-center justify-center overflow-hidden">
       {/* Loading Overlay */}
       {!imageLoaded && !imageError && (
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center z-20">
           <div className="text-center text-white">
-            <Loader2 className="h-12 w-12 animate-spin mx-auto mb-4" />
-            <p className="text-lg font-medium">Loading...</p>
+            <Loader2 className="h-8 w-8 sm:h-12 sm:w-12 animate-spin mx-auto mb-3 sm:mb-4" />
+            <p className="text-sm sm:text-lg font-medium">Loading...</p>
           </div>
         </div>
       )}
@@ -75,71 +75,74 @@ export const Hero = () => {
         style={backgroundStyle}
       />
 
-      {/* Content */}
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 transition-opacity duration-1000 ${
+      {/* Content - Mobile First Responsive */}
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 relative z-10 transition-opacity duration-1000 ${
         imageLoaded || imageError ? 'opacity-100' : 'opacity-0'
       }`}>
         <div className="text-center text-white">
-          <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-            <Sparkles className="h-4 w-4 mr-2" />
-            <span className="text-sm font-medium">Premium Dental Care</span>
+          {/* Premium Badge - Mobile Optimized */}
+          <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-sm rounded-full mb-4 sm:mb-6">
+            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
+            <span className="text-xs sm:text-sm font-medium">Premium Dental Care</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          {/* Main Heading - Properly Responsive */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 sm:mb-6">
             Your Smile is Our
             <span className="block text-yellow-300">Priority ✨</span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+          {/* Description - Mobile Friendly */}
+          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
             Advanced dental care with a <span className="font-semibold text-yellow-300">personal touch</span>. 
-            Specializing in general dentistry, cosmetic procedures, and oral surgery.
+            <span className="hidden sm:inline"> Specializing in general dentistry, cosmetic procedures, and oral surgery.</span>
           </p>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm p-4 md:p-6 rounded-xl">
-              <div className="text-2xl md:text-3xl font-bold mb-2">15+</div>
-              <div className="text-sm md:text-base">Years Experience</div>
+          {/* Stats - Compact Mobile Layout */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8 mb-6 sm:mb-8 lg:mb-12 max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">15+</div>
+              <div className="text-xs sm:text-sm md:text-base">Years Experience</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm p-4 md:p-6 rounded-xl">
-              <div className="text-2xl md:text-3xl font-bold mb-2">1000+</div>
-              <div className="text-sm md:text-base">Happy Patients</div>
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">1000+</div>
+              <div className="text-xs sm:text-sm md:text-base">Happy Patients</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm p-4 md:p-6 rounded-xl">
-              <div className="text-2xl md:text-3xl font-bold mb-2">4.9★</div>
-              <div className="text-sm md:text-base">Rating</div>
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">4.9★</div>
+              <div className="text-xs sm:text-sm md:text-base">Rating</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm p-4 md:p-6 rounded-xl">
-              <div className="text-2xl md:text-3xl font-bold mb-2">24/7</div>
-              <div className="text-sm md:text-base">Emergency</div>
+            <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">24/7</div>
+              <div className="text-xs sm:text-sm md:text-base">Emergency</div>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* CTA Buttons - Mobile Optimized */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
             <a
-              href="https://wa.me/919876543210?text=Hi Doctor, I want an appointment for dental consultation. Please let me know your availability."
+              href="https://wa.me/916290939189?text=Hi Doctor, I want an appointment for dental consultation. Please let me know your availability."
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center"
+              className="group bg-green-500 hover:bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-sm sm:text-base"
             >
-              <MessageCircle className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+              <MessageCircle className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform" />
               Book Appointment
             </a>
             <a
-              href="tel:+919876543210"
-              className="group border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center"
+              href="tel:+916290939189"
+              className="group border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center text-sm sm:text-base"
             >
-              <Phone className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+              <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
               Emergency Call
             </a>
           </div>
         </div>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute bottom-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
-      <div className="absolute top-20 right-20 w-16 h-16 bg-white/10 rounded-full animate-pulse delay-1000"></div>
+      {/* Decorative Elements - Hidden on Mobile */}
+      <div className="hidden sm:block absolute bottom-10 left-10 w-16 h-16 lg:w-20 lg:h-20 bg-white/10 rounded-full animate-pulse"></div>
+      <div className="hidden sm:block absolute top-20 right-20 w-12 h-12 lg:w-16 lg:h-16 bg-white/10 rounded-full animate-pulse delay-1000"></div>
     </section>
   );
 };

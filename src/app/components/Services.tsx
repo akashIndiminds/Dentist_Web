@@ -4,7 +4,6 @@
 import React from "react";
 import {
   Smile,
-  Heart,
   Scissors,
   Shield,
   Clock,
@@ -12,6 +11,8 @@ import {
   ChevronRight,
   Sparkles,
   CheckCircle,
+  MessageCircle,
+  Phone,
 } from "lucide-react";
 
 export default function Services() {
@@ -61,6 +62,14 @@ export default function Services() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  // WhatsApp booking function
+  const bookWhatsApp = () => {
+    const whatsappNumber = "916290939189";
+    const whatsappMessage = "Hi Doctor, I want to book an appointment for dental treatment. Please let me know your available slots.";
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappURL, '_blank');
   };
 
   return (
@@ -148,7 +157,10 @@ export default function Services() {
                   </ul>
 
                   {/* Compact Learn More Button */}
-                  <button className="flex items-center text-blue-600 hover:text-blue-700 font-semibold group/btn transition-colors duration-300 text-xs sm:text-sm">
+                  <button 
+                    onClick={scrollToContact}
+                    className="flex items-center text-blue-600 hover:text-blue-700 font-semibold group/btn transition-colors duration-300 text-xs sm:text-sm"
+                  >
                     <span>Learn More</span>
                     <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </button>
@@ -161,7 +173,7 @@ export default function Services() {
           })}
         </div>
 
-        {/* Compact CTA Section */}
+        {/* Fixed CTA Section with Different Actions */}
         <div className="text-center">
           <div className="bg-white rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border border-gray-100 max-w-lg md:max-w-2xl mx-auto">
             <div className="flex items-center justify-center mb-3 md:mb-4">
@@ -176,24 +188,35 @@ export default function Services() {
             </h3>
 
             <p className="text-gray-600 mb-4 md:mb-6 lg:mb-8 text-sm md:text-base lg:text-lg leading-relaxed">
-              Find the perfect treatment for your needs.
+              Book instantly via WhatsApp or get in touch for more information.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+              {/* WhatsApp Instant Booking */}
               <button
-                onClick={scrollToContact}
-                className="group bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
+                onClick={bookWhatsApp}
+                className="group bg-green-600 hover:bg-green-700 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
               >
-                <Heart className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
-                Book Appointment
+                <MessageCircle className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:rotate-12 transition-transform" />
+                Book via WhatsApp
               </button>
 
+              {/* Contact Form */}
               <button
                 onClick={scrollToContact}
                 className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
               >
-                Contact Us
+                <Phone className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
+                Get in Touch
               </button>
+            </div>
+
+            {/* Additional Info */}
+            <div className="mt-4 md:mt-6 text-xs md:text-sm text-gray-500">
+              <span className="inline-flex items-center">
+                <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                Instant booking available • Quick response guaranteed
+              </span>
             </div>
           </div>
         </div>

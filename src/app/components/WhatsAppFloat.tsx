@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 
 export const WhatsAppFloat = () => {
   const [showTooltip, setShowTooltip] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
+  const [isInHeroSection, setIsInHeroSection] = useState(true); // New state for CTA buttons visibility
 
   const whatsappNumber = "916290939189";
   const whatsappMessage = "Hi Doctor, I want to book an appointment. Please let me know your available slots.";
@@ -15,87 +15,93 @@ export const WhatsAppFloat = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get hero section element
-      const heroSection = document.querySelector('#home');
-      if (heroSection) {
-        const heroRect = heroSection.getBoundingClientRect();
-        const heroBottom = heroRect.bottom;
-        
-        // Show button when user scrolls past hero section (with some buffer)
-        const shouldShow = heroBottom < window.innerHeight * 0.3; // Show when 70% of hero is scrolled past
-        setIsVisible(shouldShow);
+      // Check footer proximity
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const nearFooter = footerRect.top < windowHeight + 150;
+        setIsNearFooter(nearFooter);
       }
-    };
 
-    // Check for mobile menu state
-    const checkMobileMenu = () => {
-      // Check if mobile menu is open by looking for the menu state
-      const mobileMenu = document.querySelector('.lg\\:hidden.fixed.inset-x-0.bg-white');
-      
-      if (mobileMenu) {
-        const isMenuVisible = !mobileMenu.classList.contains('-translate-y-full');
-        setIsMobileMenuOpen(isMenuVisible);
+      // Check if book appointment buttons are visible
+      // Look for CTA buttons in hero section (you can adjust these selectors based on your hero component)
+      const heroCtaButtons = document.querySelector('#home .flex.flex-col.sm\\:flex-row.gap-3'); // CTA buttons container
+      if (heroCtaButtons) {
+        const ctaRect = heroCtaButtons.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // If CTA buttons are visible (with some buffer), hide the WhatsApp button
+        const ctaVisible = ctaRect.bottom > 100 && ctaRect.top < windowHeight - 100;
+        setIsInHeroSection(ctaVisible);
+      } else {
+        // Fallback: check for any element with book appointment text
+        const bookButtons = document.querySelectorAll('a[href*="wa.me"], button');
+        let ctaVisible = false;
+        
+        bookButtons.forEach(button => {
+          if (button.textContent?.toLowerCase().includes('book appointment') || 
+              button.textContent?.toLowerCase().includes('book') ||
+              button.getAttribute('href')?.includes('wa.me')) {
+            const buttonRect = button.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Check if this book appointment button is visible
+            if (buttonRect.bottom > 100 && buttonRect.top < windowHeight - 100) {
+              ctaVisible = true;
+            }
+          }
+        });
+        
+        setIsInHeroSection(ctaVisible);
       }
     };
 
     // Initial check
     handleScroll();
-    checkMobileMenu();
-
-    // Add event listeners
+    
+    // Add scroll listener
     window.addEventListener('scroll', handleScroll);
     
-    // Check for mobile menu changes with MutationObserver
-    const observer = new MutationObserver(checkMobileMenu);
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
     // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Don't show if mobile menu is open or if still in hero section
-  const shouldHideButton = !isVisible || isMobileMenuOpen;
+  // Don't render the WhatsApp button if CTA buttons are visible
+  if (isInHeroSection) {
+    return null;
+  }
 
   return (
     <>
-      {/* WhatsApp Floating Button - Smart visibility */}
-      <div className={`fixed bottom-10 right-3 z-40 transition-all duration-500 transform ${
-        shouldHideButton 
-          ? 'translate-y-20 opacity-0 pointer-events-none scale-75' 
-          : 'translate-y-0 opacity-100 pointer-events-auto scale-100'
+      {/* WhatsApp Floating Button - Smart positioning */}
+      <div className={`fixed right-4 z-50 transition-all duration-300 ${
+        isNearFooter ? 'bottom-24' : 'bottom-4'
       }`}>
         
         {/* Tooltip */}
-        {showTooltip && !shouldHideButton && (
-          <div className="absolute bottom-full right-0 mb-3 w-56 sm:w-64 bg-white rounded-lg shadow-2xl border border-gray-200 p-4 transform animate-bounce-in">
+        {showTooltip && (
+          <div className="absolute bottom-full right-0 mb-3 w-56 sm:w-64 bg-white rounded-lg shadow-2xl border border-gray-200 p-4 transform animate-pulse">
             <button
               onClick={() => setShowTooltip(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
             >
               <X className="h-4 w-4" />
             </button>
             <div className="flex items-start space-x-3">
-              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <MessageCircle className="h-5 w-5 text-white" />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 text-sm">
-                  Quick Appointment
+                  Book Appointment
                 </h4>
-                <p className="text-gray-600 text-xs mt-1 leading-relaxed">
-                  Chat with Dr. Rajat on WhatsApp for instant booking!
+                <p className="text-gray-600 text-xs mt-1">
+                  Chat with Dr. Rajat on WhatsApp for quick appointment booking!
                 </p>
                 <div className="flex items-center mt-2 text-xs text-green-600">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                  Available now
+                  Online now
                 </div>
               </div>
             </div>
@@ -104,28 +110,25 @@ export const WhatsAppFloat = () => {
         )}
 
         {/* Main Container - Logo upar, Text niche */}
-        <div className="flex flex-col items-center space-y-2 group">
+        <div className="flex flex-col items-center space-y-2">
           
           {/* WhatsApp Logo Button */}
           <a
             href={whatsappURL}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center transform hover:scale-110 active:scale-95 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 group-hover:rotate-3"
+            className="group relative bg-green-500 hover:bg-green-600 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center transform hover:scale-110 active:scale-95 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
             onClick={() => setShowTooltip(false)}
           >
-            {/* Ripple Effects */}
+            {/* Ripple Effect */}
             <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20"></div>
-            <div className="absolute inset-0 rounded-full bg-green-300 animate-ping opacity-15 animation-delay-200"></div>
-            
-            {/* Shimmer Effect */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+            <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20 animation-delay-200"></div>
 
             {/* WhatsApp Icon - Custom SVG */}
             <svg
-              className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white group-hover:rotate-12 transition-transform duration-300 relative z-10 drop-shadow-sm"
+              className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white group-hover:rotate-12 transition-transform duration-300"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -133,62 +136,24 @@ export const WhatsAppFloat = () => {
             </svg>
 
             {/* Notification Badge */}
-            <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-red-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+            <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-red-500 rounded-full flex items-center justify-center">
               <span className="text-white text-xs font-bold">1</span>
             </div>
           </a>
 
           {/* Book Appointment Text - Niche */}
-          <div className="text-center opacity-90 group-hover:opacity-100 transition-opacity">
-            <span className="text-xs sm:text-sm font-medium text-gray-700 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-gray-200 hover:border-green-200 transition-all duration-300">
+          <div className="text-center">
+            <span className="text-xs sm:text-sm font-medium text-gray-700 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full shadow-md border border-gray-200">
               Book Appointment
             </span>
           </div>
         </div>
-
-
       </div>
 
+      {/* Simple CSS */}
       <style jsx>{`
         .animation-delay-200 {
           animation-delay: 200ms;
-        }
-
-        @keyframes bounce-in {
-          0% {
-            transform: scale(0.3) translateY(20px);
-            opacity: 0;
-          }
-          50% {
-            transform: scale(1.05) translateY(-10px);
-            opacity: 0.8;
-          }
-          70% {
-            transform: scale(0.9) translateY(0px);
-            opacity: 0.9;
-          }
-          100% {
-            transform: scale(1) translateY(0px);
-            opacity: 1;
-          }
-        }
-
-        .animate-bounce-in {
-          animation: bounce-in 0.6s ease-out forwards;
-        }
-
-        /* Enhanced breathing effect */
-        @keyframes breathe {
-          0%, 100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
-          }
-        }
-
-        .group:hover .relative {
-          animation: breathe 2s ease-in-out infinite;
         }
       `}</style>
     </>
