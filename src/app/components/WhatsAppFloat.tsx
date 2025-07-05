@@ -67,7 +67,7 @@ export const WhatsAppFloat = () => {
   return (
     <>
       {/* WhatsApp Floating Button - Smart visibility */}
-      <div className={`fixed bottom-24 right-4 z-40 transition-all duration-500 transform ${
+      <div className={`fixed bottom-10 right-3 z-40 transition-all duration-500 transform ${
         shouldHideButton 
           ? 'translate-y-20 opacity-0 pointer-events-none scale-75' 
           : 'translate-y-0 opacity-100 pointer-events-auto scale-100'
