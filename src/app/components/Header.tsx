@@ -30,6 +30,40 @@ export const Header = () => {
     };
   }, [isMenuOpen]);
 
+  // Enhanced click outside handler
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (isMenuOpen) {
+        const target = event.target as Element;
+        const menuCard = document.querySelector('[data-menu-card]');
+        const menuButton = document.querySelector('[data-menu-button]');
+        
+        // Close menu if click is outside the card and not on the menu button
+        if (menuCard && !menuCard.contains(target) && menuButton && !menuButton.contains(target)) {
+          setIsMenuOpen(false);
+        }
+      }
+    };
+
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isMenuOpen]);
+
   const navigation = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
@@ -158,6 +192,7 @@ export const Header = () => {
               className="lg:hidden p-2 rounded-xl hover:bg-blue-50 transition-all duration-300 group relative z-50"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
+              data-menu-button // Data attribute for click outside detection
             >
               <div className="relative">
                 {isMenuOpen ? (
@@ -170,78 +205,109 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu Overlay - Enhanced with Better Click Detection */}
         {isMenuOpen && (
-          <div className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={() => setIsMenuOpen(false)}>
-          </div>
+          <div 
+            className="lg:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40 cursor-pointer" 
+            onClick={() => setIsMenuOpen(false)}
+            onTouchStart={() => setIsMenuOpen(false)} // For better mobile touch support
+            style={{ top: 0 }} // Full screen overlay
+          />
         )}
 
-        {/* Mobile Menu */}
-        <div className={`lg:hidden fixed inset-x-0 bg-white z-40 transform transition-all duration-500 ease-in-out shadow-2xl ${
-          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-        }`} 
-        style={{ 
-          top: isScrolled ? '72px' : '120px', // Adjust based on header height
-          height: isScrolled ? 'calc(100vh - 72px)' : 'calc(100vh - 120px)'
-        }}>
-          <div className="h-full overflow-y-auto">
-            <div className="px-4 py-6">
-              <nav className="flex flex-col space-y-2">
-                {navigation.map((item, index) => (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-4 px-4 rounded-xl transition-all duration-300 text-left group border border-transparent hover:border-blue-100"
-                    style={{ 
-                      animationDelay: `${index * 0.1}s`,
-                      animation: isMenuOpen ? 'slideInDown 0.3s ease-out forwards' : 'none'
-                    }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg">{item.name}</span>
-                      <div className="w-0 h-0.5 bg-blue-600 group-hover:w-6 transition-all duration-300 rounded-full"></div>
-                    </div>
-                  </button>
-                ))}
+        {/* Mobile Menu - Card Style with Spacing */}
+        <div className={`lg:hidden fixed inset-0 z-40 ${
+          isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}>
+          {/* Card Container with spacing from screen edges */}
+          <div 
+            className={`absolute left-4 right-4 bg-white rounded-2xl shadow-2xl border border-gray-100 transform transition-all duration-500 ease-in-out ${
+              isMenuOpen ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-full opacity-0 scale-95'
+            }`}
+            style={{ 
+              top: isScrolled ? '88px' : '136px', // Space from header + 16px gap
+              maxHeight: isScrolled ? 'calc(100vh - 104px)' : 'calc(100vh - 152px)', // Adjusted for card spacing
+              minHeight: '60vh' // Minimum height for better UX
+            }}
+            onClick={(e) => e.stopPropagation()} // Prevent card clicks from closing menu
+            data-menu-card // Data attribute for click outside detection
+          >
+            {/* Scrollable Content Container with card padding */}
+            <div className="h-full overflow-y-auto overscroll-contain rounded-2xl">
+              <div className="px-5 sm:px-6 py-5 sm:py-6">
+                {/* Card Header */}
+                <div className="mb-5 sm:mb-6 pb-4 border-b border-gray-100">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 text-center">
+                    Navigation Menu
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 text-center mt-1">
+                    Dr. Rajat Majumdar - Dental Care
+                  </p>
+                </div>
+
+                {/* Navigation Items */}
+                <nav className="flex flex-col space-y-2 sm:space-y-3">
+                  {navigation.map((item, index) => (
+                    <button
+                      key={item.name}
+                      onClick={() => scrollToSection(item.href)}
+                      className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 sm:py-4 px-4 sm:px-5 rounded-xl transition-all duration-300 text-left group border border-transparent hover:border-blue-100 hover:shadow-sm"
+                      style={{ 
+                        animationDelay: `${index * 0.1}s`,
+                        animation: isMenuOpen ? 'slideInDown 0.3s ease-out forwards' : 'none'
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-base sm:text-lg">{item.name}</span>
+                        <div className="w-0 h-0.5 bg-blue-600 group-hover:w-4 sm:group-hover:w-6 transition-all duration-300 rounded-full"></div>
+                      </div>
+                    </button>
+                  ))}
+                </nav>
                 
-                {/* Mobile CTA Section */}
-                <div className="pt-6 border-t border-gray-100 space-y-4">
+                {/* Mobile CTA Section - Card Style */}
+                <div className="pt-5 sm:pt-6 mt-5 sm:mt-6 border-t border-gray-100 space-y-3 sm:space-y-4">
+                  {/* Call Now Button */}
                   <a
                     href={`tel:+${whatsappNumber}`}
                     onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center justify-between text-blue-600 font-semibold px-4 py-4 hover:bg-blue-50 rounded-xl transition-all duration-300 border border-blue-200 hover:border-blue-300 group"
+                    className="flex items-center text-blue-600 font-semibold px-4 sm:px-5 py-3 sm:py-4 hover:bg-blue-50 rounded-xl transition-all duration-300 border border-blue-200 hover:border-blue-300 group w-full hover:shadow-md"
                   >
-                    <div className="flex items-center space-x-3">
-                      <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                        <Phone className="h-5 w-5 group-hover:rotate-12 transition-transform" />
+                    <div className="flex items-center space-x-3 w-full">
+                      <div className="p-2.5 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors flex-shrink-0">
+                        <Phone className="h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform" />
                       </div>
-                      <div>
-                        <div className="font-semibold">Call Now</div>
-                        <div className="text-sm text-gray-600">+91 62909 39189</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-sm sm:text-base">Call Now</div>
+                        <div className="text-xs sm:text-sm text-gray-600 truncate">+91 62909 39189</div>
                       </div>
                     </div>
                   </a>
                   
+                  {/* WhatsApp Button */}
                   <a
                     href={whatsappURL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMenuOpen(false)}
-                    className="w-full px-4 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl font-semibold hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center group relative overflow-hidden"
+                    className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl font-semibold hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center group relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                    <div className="flex items-center space-x-3 relative z-10">
-                      <div className="p-2 bg-white/20 rounded-lg">
-                        <MessageCircle className="h-5 w-5 group-hover:rotate-12 transition-transform" />
+                    <div className="flex items-center space-x-3 relative z-10 w-full">
+                      <div className="p-2.5 bg-white/20 rounded-lg flex-shrink-0">
+                        <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform" />
                       </div>
-                      <div>
-                        <div className="font-semibold">Book via WhatsApp</div>
-                        <div className="text-sm text-emerald-100">Quick & Easy Appointment</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-sm sm:text-base">Book via WhatsApp</div>
+                        <div className="text-xs sm:text-sm text-emerald-100">Quick & Easy Appointment</div>
                       </div>
                     </div>
                   </a>
                 </div>
-              </nav>
+
+                {/* Extra spacing for better card UX */}
+                <div className="h-4 sm:h-6"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -257,6 +323,29 @@ export const Header = () => {
             transform: translateY(0);
             opacity: 1;
           }
+        }
+        
+        /* Custom scrollbar for mobile menu card */
+        .overflow-y-auto::-webkit-scrollbar {
+          width: 3px;
+        }
+        
+        .overflow-y-auto::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        
+        .overflow-y-auto::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 3px;
+        }
+        
+        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
+        
+        /* Card animation enhancements */
+        .lg\\:hidden .transform {
+          transform-origin: top center;
         }
       `}</style>
     </>
