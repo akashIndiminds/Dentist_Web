@@ -8,18 +8,10 @@ import {
   ChevronLeft,
   ChevronRight,
   CheckCircle,
-  MessageCircle,
 } from "lucide-react";
 
 export const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  const whatsappNumber = "916290939189"; // Replace with actual number
-  const whatsappMessage =
-    "Hi Doctor, I want to book an appointment after reading your testimonials.";
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
 
   const testimonials = [
     {
@@ -230,27 +222,6 @@ export const Testimonials = () => {
             <div className="text-gray-600 font-medium text-xs md:text-sm">
               Happy Patients
             </div>
-          </div>
-        </div>
-
-        {/* WhatsApp CTA */}
-        <div className="text-center">
-          <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-lg border border-gray-100 max-w-md lg:max-w-lg mx-auto">
-            <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-3">
-              Ready to Join Our Happy Patients?
-            </h3>
-            <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
-              Book your appointment and experience exceptional dental care.
-            </p>
-            <a
-              href={whatsappURL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
-            >
-              <MessageCircle className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-              Book via WhatsApp
-            </a>
           </div>
         </div>
       </div>

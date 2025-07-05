@@ -7,17 +7,9 @@ import {
   Award,
   Heart,
   Users,
-  MessageCircle,
 } from "lucide-react";
 
 export const Team = () => {
-  const whatsappNumber = "916290939189"; // Replace with actual number
-  const whatsappMessage =
-    "Hi Doctor, I want to book an appointment with your team.";
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
-
   const teamMembers = [
     {
       id: "1",
@@ -80,6 +72,13 @@ export const Team = () => {
       experience: "10 Years",
     },
   ];
+
+  const scrollToContact = () => {
+    const element = document.querySelector("#contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section
@@ -256,17 +255,14 @@ export const Team = () => {
             </div>
           </div>
 
-          {/* WhatsApp CTA */}
+          {/* Simple Contact Button */}
           <div className="text-center mt-6 md:mt-8 lg:mt-10">
-            <a
-              href={whatsappURL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
+            <button
+              onClick={scrollToContact}
+              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
             >
-              <MessageCircle className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-              Book with Our Team
-            </a>
+              Get in Touch
+            </button>
           </div>
         </div>
       </div>

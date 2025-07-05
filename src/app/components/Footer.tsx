@@ -1,12 +1,8 @@
 // src/app/components/Footer.tsx
 "use client";
-import { ChevronRight, Clock, Facebook, Heart, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, MessageCircle } from "lucide-react"
+import { ChevronRight, Clock, Facebook, Heart, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react"
 
 export const Footer = () => {
-  const whatsappNumber = "916290939189" // Replace with actual number
-  const whatsappMessage = "Hi Doctor, I want to book an appointment."
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
-
   const services = [
     'General Dentistry', 'Cosmetic Dentistry', 'Oral Surgery', 
     'Emergency Care', 'Dental Implants', 'Teeth Whitening'
@@ -58,10 +54,10 @@ export const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed text-sm">
-              Providing exceptional dental care with <span className="text-blue-300 font-semibold">advanced technology</span> and a personal touch.
+              Providing exceptional dental care with <span className="text-blue-300 font-semibold">advanced technology</span> and a personal touch. Your trusted dental partner for comprehensive oral health solutions.
             </p>
             
-            {/* Social Links & WhatsApp */}
+            {/* Social Links Only */}
             <div className="flex items-center space-x-4">
               {socialLinks.map((social, index) => {
                 const IconComponent = social.icon
@@ -76,34 +72,25 @@ export const Footer = () => {
                   </a>
                 )
               })}
-              <a
-                href={whatsappURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 px-3 py-1.5 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-sm ml-2"
-              >
-                <MessageCircle className="h-4 w-4" />
-                <span>WhatsApp</span>
-              </a>
             </div>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-3">
-            <h4 className="text-lg font-semibold text-blue-300 mb-4">Contact Info</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+            <h4 className="text-lg font-semibold text-blue-300 mb-4">Contact Information</h4>
+            <div className="grid grid-cols-1 gap-3">
               <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/50 transition-colors">
                 <MapPin className="h-4 w-4 text-blue-400 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300 font-medium text-sm">123 Dental Street</p>
-                  <p className="text-gray-300 text-xs">City, State 12345</p>
+                  <p className="text-gray-300 font-medium text-sm">157/1, SN Roy Road, New Alipore</p>
+                  <p className="text-gray-400 text-xs">Kolkata, West Bengal 700034</p>
                 </div>
               </div>
               
-              <a href="tel:5551234567" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/50 transition-colors">
+              <a href="tel:+916290939189" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/50 transition-colors">
                 <Phone className="h-4 w-4 text-blue-400 flex-shrink-0" />
                 <span className="text-gray-300 hover:text-blue-300 transition-colors font-medium text-sm">
-                  (555) 123-4567
+                  +91 62909 39189
                 </span>
               </a>
               
@@ -117,8 +104,8 @@ export const Footer = () => {
               <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/50 transition-colors">
                 <Clock className="h-4 w-4 text-blue-400 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300 font-medium text-sm">Mon-Fri: 8AM-6PM | Sat: 9AM-3PM</p>
-                  <p className="text-blue-300 font-semibold text-xs">Emergency: 24/7</p>
+                  <p className="text-gray-300 font-medium text-sm">Mon-Fri: 9AM-7PM | Sat: 9AM-4PM</p>
+                  <p className="text-emerald-300 font-semibold text-xs">Emergency: 24/7 Available</p>
                 </div>
               </div>
             </div>

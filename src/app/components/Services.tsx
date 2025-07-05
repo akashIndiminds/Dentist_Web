@@ -12,17 +12,9 @@ import {
   ChevronRight,
   Sparkles,
   CheckCircle,
-  MessageCircle,
 } from "lucide-react";
 
 export default function Services() {
-  const whatsappNumber = "916290939189"; // Replace with actual number
-  const whatsappMessage =
-    "Hi Doctor, I want to know more about your dental services.";
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
-
   const services = [
     {
       id: "general",
@@ -188,21 +180,18 @@ export default function Services() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <a
-                href={whatsappURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-green-600 hover:bg-green-700 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
+              <button
+                onClick={scrollToContact}
+                className="group bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
               >
-                <MessageCircle className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:rotate-12 transition-transform" />
-                Book via WhatsApp
-              </a>
+                <Heart className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
+                Book Appointment
+              </button>
 
               <button
                 onClick={scrollToContact}
                 className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
               >
-                <Heart className="ml-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
                 Contact Us
               </button>
             </div>

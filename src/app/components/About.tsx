@@ -1,16 +1,9 @@
 // src/app/components/About.tsx
 "use client";
 
-import { Users, CheckCircle, Sparkles, MessageCircle } from "lucide-react";
+import { Users, CheckCircle, Sparkles } from "lucide-react";
 
 export default function About() {
-  const whatsappNumber = "916290939189"; // Replace with actual number
-  const whatsappMessage =
-    "Hi Doctor, I want to know more about your dental practice.";
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
-
   const stats = [
     { number: "15+", label: "Years Experience", icon: Users },
     { number: "1000+", label: "Happy Patients", icon: Users },
@@ -29,6 +22,13 @@ export default function About() {
 
   const scrollToTeam = () => {
     const element = document.querySelector("#team");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToContact = () => {
+    const element = document.querySelector("#contact");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -109,15 +109,12 @@ export default function About() {
                 <Users className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
                 Meet Our Team
               </button>
-              <a
-                href={whatsappURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group border-2 border-green-600 text-green-600 hover:bg-green-50 px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
+              <button
+                onClick={scrollToContact}
+                className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm md:text-base"
               >
-                <MessageCircle className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:rotate-12 transition-transform" />
-                WhatsApp Us
-              </a>
+                Get in Touch
+              </button>
             </div>
           </div>
 
